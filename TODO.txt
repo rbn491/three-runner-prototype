@@ -1,0 +1,6 @@
+TODO:
+
+- create path / spline
+- move camera along path / spline
+- place object in front of camera
+- move object to the left/right with keyboard
