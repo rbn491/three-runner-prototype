@@ -75,7 +75,7 @@ function init()
         new THREE.Vector3(100, 0, 0),
         new THREE.Vector3(150, 0, 30),
         new THREE.Vector3(200, 0, 0),
-        new THREE.Vector3(250, 0, 0),
+        new THREE.Vector3(250, 0, 1),
         new THREE.Vector3(300, 0, 0),
         new THREE.Vector3(350, 0, -34),
         new THREE.Vector3(400, 0, 0),
