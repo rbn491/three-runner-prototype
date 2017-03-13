@@ -7,13 +7,13 @@ function init()
     var height = 620;
     var scene = new THREE.Scene();
     // scene.fog = new THREE.Fog(0xffffff, .015, 100);
-    var fov = 45;
+    var fov = 60;
     var camera = new THREE.PerspectiveCamera(fov, width / height, .1, 1000);
     
-    camera.position.x = -30;
-    camera.position.y = 20;
-    camera.position.z = 30;
-    camera.lookAt(scene.position);
+    // camera.position.x = -30;
+    // camera.position.y = 20;
+    // camera.position.z = 30;
+    // camera.lookAt(scene.position);
 
     var renderer = new THREE.WebGLRenderer(
     {
@@ -21,7 +21,7 @@ function init()
     });
     renderer.setClearColor(new THREE.Color(0xeeeeee));
     renderer.setSize(width, height);
-    renderer.shadowMap.enabled = true;
+    // renderer.shadowMap.enabled = true;
 
     var axes = new THREE.AxisHelper(100);
     scene.add(axes);
@@ -36,7 +36,7 @@ function init()
 
     plane.rotation.x = -.5 * Math.PI;
     plane.position.x = 500;
-    plane.position.y = 0;
+    plane.position.y = -2.5;
     plane.position.z = 0;
 
     scene.add(plane);
@@ -49,43 +49,33 @@ function init()
     var box = new THREE.Mesh(boxGeometry, boxMaterial);
     scene.add(box);
 
-    var ambientLight = new THREE.AmbientLight(0x0c0c0c);
-    scene.add(ambientLight);
+    // var ambientLight = new THREE.AmbientLight(0x0c0c0c);
+    // scene.add(ambientLight);
 
-    var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.position.set(-40, 60, -10);
-    spotLight.castShadow = true;
-    scene.add(spotLight);
+    // var spotLight = new THREE.SpotLight(0xffffff);
+    // spotLight.position.set(-40, 60, -10);
+    // spotLight.castShadow = true;
+    // scene.add(spotLight);
 
     document.getElementById("webgl-container").appendChild(renderer.domElement);
 
-    // var randomPoints = [];
-    // for (var i = 0; i < 100; i++)
-    // {
-    //     randomPoints.push(
-    //         new THREE.Vector3(i++, 0, Math.random() * 200 - 100)
-    //     );
-    // }
-    // var spline = new THREE.SplineCurve3(randomPoints);
-
-
     var path = [
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(50, 0, 0),
-        new THREE.Vector3(100, 0, 0),
-        new THREE.Vector3(150, 0, 30),
-        new THREE.Vector3(200, 0, 0),
-        new THREE.Vector3(250, 0, 1),
-        new THREE.Vector3(300, 0, 0),
-        new THREE.Vector3(350, 0, -34),
+        new THREE.Vector3(50, 5, 0),
+        new THREE.Vector3(100, 10, 0),
+        new THREE.Vector3(150, 15, 30),
+        new THREE.Vector3(200, 20, 0),
+        new THREE.Vector3(250, 15, 1),
+        new THREE.Vector3(300, 10, 0),
+        new THREE.Vector3(350, 5, -34),
         new THREE.Vector3(400, 0, 0),
         new THREE.Vector3(450, 0, -15),
         new THREE.Vector3(500, 0, 0),
-        new THREE.Vector3(550, 0, 0),
-        new THREE.Vector3(600, 0, -20),
-        new THREE.Vector3(650, 0, 0),
-        new THREE.Vector3(700, 0, 0),
-        new THREE.Vector3(750, 0, -10),
+        new THREE.Vector3(550, 10, 0),
+        new THREE.Vector3(600, 15, -20),
+        new THREE.Vector3(650, 20, -10),
+        new THREE.Vector3(700, 50, 30),
+        new THREE.Vector3(750, 25, -10),
         new THREE.Vector3(800, 0, 0),
         new THREE.Vector3(850, 0, 37),
         new THREE.Vector3(900, 0, 0),
@@ -114,16 +104,16 @@ function init()
     function render()
     {
         boxPosIndex++;
-        if (boxPosIndex > 1000)
+        if (boxPosIndex > 1200)
         {
             boxPosIndex = 0;
         }
-        var boxPos = spline.getPoint(boxPosIndex / 1000);
+        var boxPos = spline.getPoint(boxPosIndex / 1200);
         // var boxRot = spline.getTangent(boxPosIndex / 10000);
 
         box.position.x = boxPos.x;
-        box.position.y = 2.5;
-        // box.position.y = boxPos.y;
+        // box.position.y = 2.5;
+        box.position.y = boxPos.y;
         box.position.z = boxPos.z;
       
         // box.rotation.x = boxRot.x;
